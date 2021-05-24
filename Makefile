@@ -12,13 +12,14 @@ TARGET = ulo0.1
 BIN_TARGET = ${DIR_BIN}/${TARGET}
 
 CC = gcc
-CFLAGS = -g -Wall -I${DIR_INC}
+CFLAGS = -g -Wall -I${DIR_INC} 
+LDFLAGS = -lm
 
 ${BIN_TARGET}:${OBJ}
-	$(CC) $(OBJ)  -o $@
+	$(CC) $(OBJ) ${LDFLAGS} -o $@
 
 ${DIR_OBJ}/%.o:${DIR_SRC}/%.c
-	$(CC) $(CFLAGS) -c  $< -o $@
+	$(CC) $(CFLAGS) -c  $< ${LDFLAGS} -o $@
 
 .PHONY:clean
 clean:
