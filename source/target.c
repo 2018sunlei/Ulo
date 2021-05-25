@@ -1,6 +1,7 @@
 #include <stdio.h>
-#include "../include/cJSON.h"
+#include "../include/target.h"
 
+static DWORD gdwTCount      = 0;
 
 int main()
 {
@@ -13,7 +14,10 @@ int main()
 
 	char *out =  cJSON_Print(usr);
     printf("%s\n",out);
-
+    gdwTCount = GetTickCount();
+    bugPrintf("%ld\n",gdwTCount);
+	fprintf(stderr, "[%s]","TEST");
+	printf("\033[36m %s\n\033[0m",out);	
 	cJSON_Delete(usr);
 }
 
